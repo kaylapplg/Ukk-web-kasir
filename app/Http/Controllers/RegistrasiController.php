@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +24,7 @@ class RegistrasiController extends Controller
         $password = $request->password;
 
         DB::table('registrasi')->insert([
-            'id'=> $nik,
+            'id'=> $id,
             'nama'=> $nama,
             'username'=> $username,
             'email'=> $email,
@@ -40,6 +41,6 @@ class RegistrasiController extends Controller
     }
 
     function login(){
-        return view('halamanlogin');
+        return view('tampilan_login');
       }
 }

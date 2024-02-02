@@ -11,13 +11,13 @@ class LoginController extends Controller
 {
     function index(){
 
-        // return Hash::make("aether123");
+        // return Hash::make("123");
         return view("halamanlogin");
     }
     function login(Request $request){
         $dataLogin = $request->only("username", "password");
         if(Auth::attempt($dataLogin)){
-            return redirect("/home");
+            return redirect("/penjualan");
         }else{
             // echo "gagal login";
             return redirect("/login");

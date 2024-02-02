@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Registrasi</title>
+    <meta name="viewport" content="width=device-width, initihbbval-scale=1.0">
+    <title>Registrasi</title>
     <style>
         body {
-            background-image: url('{{ asset('foto/registrasi.jpg') }}');
+            background-image: url('{{ asset('foto/registrasi.png') }}');
             background-size: cover;
-            background-position: center;
+            background-position: bottom;
             background-repeat: no-repeat;
             height: 100vh; /* Set the height of the background */
             margin: 0; /* Remove default margin */
@@ -26,34 +26,35 @@
         }
 
         form {
-            background-color: #fff;
+            background-color: #FFF0DD;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            margin-top: 90px;
         }
 
         h2 {
             text-align: center;
-            color: #333;
+            color: #FF8CB6;
         }
 
         label {
             display: block;
-            margin: 10px 0 5px;
-            color: #666;
+            margin: 1px 0 1px;
+            color: #FF8CB6;
         }
 
         input {
             width: calc(100% - 12px);
             padding: 8px;
             margin-bottom: 10px;
-            border: 1px solid #ddd;
+            border: 1px solid #FF8CB6;
             border-radius: 4px;
         }
 
         button {
-            background-color: #4caf50;
+            background-color: #FF8CB6;
             color: #fff;
             padding: 10px;
             border: none;
@@ -63,11 +64,11 @@
         }
 
         button.cancel {
-            background-color: #e74c3c;
+            background-color: #F64083;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #FFDEF9;
         }
     </style>
 </head>
@@ -100,12 +101,10 @@
 
     <script>
         function register() {
-            // Implementasikan logika registrasi di sini
             alert("Registrasi berhasil!");
         }
 
         function cancel() {
-            // Implementasikan logika pembatalan di sini
             alert("Pendaftaran dibatalkan.");
         }
     </script>
