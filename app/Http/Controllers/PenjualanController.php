@@ -28,15 +28,16 @@ class PenjualanController extends Controller
          }
         }
  
-        $detailPenjualan = DB::table("detailpejualan")->where("PenjualanID", $idPenjualan)
-        ->join("produk", "detailpejualan.ProdukID", "=", "produk.ProdukID")
+        $detailPenjualan = DB::table("detailpenjualan")->where("PenjualanID", $idPenjualan)
+        ->join("produk", "detailpenjualan.ProdukID", "=", "produk.ProdukID")
         ->get();
         //return $detailpenjualan
  
-        return view("penjualan", ['idPenjualan'=> $idPenjualan,'detailpejualan'=> $detailPenjualan, 'produk' => $produk, 'pelanggan' => $pelanggan]);
+        return view("penjualan", ['idPenjualan'=> $idPenjualan,'detailpenjualan'=> $detailPenjualan, 'produk' => $produk, 'pelanggan' => $pelanggan]);
      }
  
      function store(request $request){
+        // return $request->all();
 
      $produk = DB::table('produk')->where('ProdukID', $request->produk)->first();
      //return produk
@@ -54,9 +55,9 @@ class PenjualanController extends Controller
          if($produk-> Stok - $request->qty < 0){
             return redirect()->back()->with("info", "Stok Tidak Mencukupi");
         }else{
+        // return "a";
         
-        
-         $detailPenjualan = DB::table("detailpejualan")->insert([
+         $detailPenjualan = DB::table("detailpenjualan")->insert([
              'PenjualanID' => $request->idPenjualan,
              'ProdukID' => $request->produk,
              'JumlahProduk' => $request->qty,
@@ -65,7 +66,7 @@ class PenjualanController extends Controller
 
          //update stok produk
          DB::table("produk")->where('ProdukID', $request->produk)->update(['stok' => $produk->Stok - $request->qty]);
-         
+         //return "berhasil";
          return redirect()->back();
      }
     }
@@ -81,8 +82,8 @@ class PenjualanController extends Controller
     }
     function detailpenjualan($id){
         $penjualan = DB::table('penjualan')->where('PenjualanID', $id)->get();
-        $detailPenjualan = DB::table('detailpejualan')->where('PenjualanID', $id)
-        ->join('produk', 'detailpejualan.ProdukID', '=', 'produk.ProdukID')
+        $detailPenjualan = DB::table('detailpenjualan')->where('PenjualanID', $id)
+        ->join('produk', 'detailpenjualan.ProdukID', '=', 'produk.ProdukID')
         ->get();
 
         return $detailPenjualan;

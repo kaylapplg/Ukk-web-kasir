@@ -28,11 +28,22 @@
               <span class="line"></span>
             </div>
             <li class="item">
+              <a href="home" class="link flex">
+                <i><img src="{{url('/foto/images/rumah.png')}}" alt="Image" height="30" width="30" /></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="item">
               <a href="penjualan" class="link flex">
                 <i><img src="{{url('/foto/images/penjualan.png')}}" alt="Image" height="30" width="30" /></i>
                 <span>Penjualan</span>
               </a>
             </li>
+            <li class="item">
+              <a href="datapenjualan" class="link flex">
+                <i><img src="{{url('/foto/images/data.png')}}" alt="Image" height="30" width="30" /></i>
+                <span>Data Penjualan</span>
+              </a>
             <div class="menu_title flex">
               <span class="title">Produk</span>
               <span class="line"></span>

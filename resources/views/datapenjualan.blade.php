@@ -71,49 +71,43 @@
             transition: background-color 0.3s;
         }
 
-        .delete {
+        .detail {
             background-color: #FF8BBE; 
         }
 
-        .delete:hover {
+        .detail:hover {
             background-color: #CB2E72; 
         }
 
-        .update {
-            background-color: #FFE899; 
-        }
-
-        .update:hover {
-            background-color: #D7B53C; 
-        }
     </style>
 </head>
 <body>
-
+<form action="" method="POST" enctype="multipart/form-data">
 <header>
-    <h1>Data Pelanggan</h1>
+    <h1>Data Penjualan</h1>
 </header>
 
 <table>
     <thead>
         <tr>
-            <th>Nama</th>
-            <th>Alamat</th>
-            <th>No Telp</th>
-            <th>Aksi</th>
+            <th scope="col">PenjualanID</th>
+            <th scope="col">Tanggal Penjualan</th>
+            <th scope="col">Total Harga</th>
+            <th scope="col">PelangganID</th>
+            <th scope="col">Aksi</th>
         </tr>
     </thead>
-    @foreach ($pelanggan as $pelanggan)
+    @foreach ($penjualan as $penjualan)
     <tbody>
-        <tr><center>
-            <td>{{$pelanggan->NamaPelanggan}}</td>
-            <td>{{$pelanggan->Alamat}}</td>
-            <td>{{$pelanggan->NomorTelepon}}</td>
+        <tr>
+            <td>{{$penjualan->PenjualanID}}</td>
+            <td>{{$penjualan->TanggalPenjualan}}</td>
+            <td>{{$penjualan->TotalHarga}}</td>
+            <td>{{$penjualan->PelangganID}}</td>
             <td class="actions">
-                <a type="button" class="delete" href={{url("/datapelanggan/deletepelanggan/$pelanggan->PelangganID")}}>Hapus</button>
-                <a type="button" class="update" href={{url("/datapelanggan/updatepelanggan/$pelanggan->PelangganID")}}>Update</button>
+                <a type="button" class="btn btn-outline-info" href={{url("/detailpenjualan/$penjualan->PenjualanID")}}>Detail</button>
             </td>
-        </tr></center>
+        </tr>
     </tbody>
     @endforeach
 </table>

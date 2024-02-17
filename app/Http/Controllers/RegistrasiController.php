@@ -17,6 +17,8 @@ class RegistrasiController extends Controller
     }
 
     function registrasi (request $request){
+
+        // return 'tes';
         $id = $request->id;
         $nama = $request->nama;
         $username = $request->username;

@@ -81,6 +81,8 @@
 </head>
 <body>
     <form action= "login" method="post">
+        @method("POST")
+        @CSRF
 <div class="login-container">
     <h2>Login</h2>
     <form class="login-form">

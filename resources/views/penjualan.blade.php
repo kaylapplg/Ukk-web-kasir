@@ -1,152 +1,193 @@
-@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url('bs/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url('/css/style.css') }}">
     <title>Login Page</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
         body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFF0DD;
             background-image: url('{{ asset('foto/images/background.png') }}');
             background-size: cover;
             background-position: bottom;
             background-repeat: no-repeat;
             height: 100vh; /* Set the height of the background */
             margin: 0; /* Remove default margin */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
-            background-color: #FF8CB6;
-            margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
         }
 
-        .login-container {
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
             background-color: #FF8CB6;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-left: 260px;
-            padding: 20px;
-            width: 900px;
+        }
+
+        tr {
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        h1, h4 {
+            color: #ffffff;
+        }
+
+        label {
+            margin-bottom: 8px;
+            display: block;
+            color: #ffffff;
+        }
+
+        table {
+            text-decoration-color: #fff
+        }
+
+        select, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ffe7c8;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-checkout {
+            background-color: #ffe7c8;
+            color: #000000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn-checkout:hover {
+            background-color: #ecb772; 
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ffdeb3;
+            padding: 10px;
             text-align: left;
         }
-.buat
-{ 
-    font-size: 30px;
-    text-decoration: none;
-    color: black;
-    font-family: ;
-    text-align: left;
-    
-}
-h1{
-    font-size:23px;
-    text-decoration: none;
-    color: black;
-    font-family:;
-}
-h4{
-  font-size:23px;
-    text-decoration: none;
-    color: black;
-    font-family:;
-}
-.container{
-  width: 800px;
-  margin-top: 40;
- 
-}
-</style>
+
+        th {
+            background-color: #ffe7c8;
+            color: #000000;
+        }
+
+        .total {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .form-group button {
+            background-color: #c72d65   ;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
 <body>
-<div class="row g-3 align-item-center">
-<div class="col-4 p-4">
-    <h4>Data Produk</h4>
-  <form action='{{ url("/penjualan") }}' method="post">
-  @method ('POST')
-  @CSRF
+    <div class="container">
+        @if(Session::has("info"))
 
-<input type="hidden" name="idPenjualan" value ="{{$idPenjualan}}">
-            <select class="form-select" aria-label="Default select example" name="produk">
-                <option selected>Enter The Product</option>
-                @foreach($produk as $produk)
-                <option value="{{$produk->ProdukID}}">{{$produk->NamaProduk}}</option>
+           {{Session("info")}}
+
+        @endif
+        <h4>Data Produk</h4>
+        <form action="{{ url('/penjualan') }}" method="post">
+            @method('POST')
+            @csrf
+
+            <label for="produk">Nama Produk</label>
+            <select id="produk" name="produk">
+                <option selected disabled>Select Product</option>
+                @foreach($produk as $product)
+                <option value="{{ $product->ProdukID }}">{{ $product->NamaProduk }}</option>
                 @endforeach
             </select>
 
-  <br>
-<div class="col-12 p-7">
-  <h1>Jumlah Produk</h1>
- <input type="number" id="qty" name="qty" min="1" max="1000"> <br> <br>
- <input type= "submit" value="Add" class="btn btn-outline-secondary">
-<br> <br>
+            <label for="qty">Jumlah Produk</label>
+            <input type="number" id="qty" name="qty" min="1" max="1000">
 
-  <select class="form-select" aria-label="Default select example" name="pelanggan">
-                <option selected>Enter Pelanggan's Name</option>
+            <label for="pelanggan">Nama Pelanggan</label>
+            <select id="pelanggan" name="pelanggan">
+                <option selected disabled>Select Customer</option>
                 @foreach($pelanggan as $pelanggan)
-                <option value="{{$pelanggan->PelangganID}}" name="pelanggan">{{$pelanggan->NamaPelanggan}}</option>
+                <option value="{{ $pelanggan->PelangganID }}">{{ $pelanggan->NamaPelanggan }}</option>
                 @endforeach
             </select>
-</form>
-</div>
+            
+            <input type="hidden" name="idPenjualan" value="{{ $idPenjualan }}">
+            <input type="submit" value="Add" class="btn btn-outline-secondary btn-checkout">
 
+        </form>
 
- <div class="col-12 p-7">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nama Produk</th>
+                    <th>Harga</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $TotalHarga = 0;?>
+                @foreach($detailpenjualan as $detailpenjualan)
+                <tr>
+                    <td>{{ $detailpenjualan->NamaProduk }}</td>
+                    <td>{{ $detailpenjualan->Harga }}</td>
+                    <td>{{ $detailpenjualan->JumlahProduk }}</td>
+                    <td>{{ $detailpenjualan->Subtotal }}</td>
+                    <?php $TotalHarga = $TotalHarga=$detailpenjualan->Subtotal ?>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-
-  <div class="col-6">
-  <div class="px-9 py-5 px-md-9 text-center text-lg-start" >
-  <div class="container">
-  <div class="row gx-lg-10 align-items-center">
-                    <div class="col-lg-14 mb-8 mb-lg-1">
-                    <div class="card">
-                    <div class="card-body py-5 px-md-9">
-
-  <table class="table table-secondary">
-  <thead>
-    <tr>
-      <th scope="col">Nama Produk</th>
-      <th scope="col">Harga</th>
-      <th scope="col">Qty</th>
-      <th scope="col">Subtotal</th>
-    </tr>
-  </thead>
-
-  <?php $totalHarga = 0;?>
-                  @foreach($detailpejualan as $detailpejualan)
-                    <tbody>
-                    <tr>
-                        <td>{{$detailpejualan->NamaProduk}}</td>
-                        <td>{{$detailpejualan->Harga}}</td>
-                        <td>{{$detailpejualan->JumlahProduk}}</td>
-                        <td>{{$detailpejualan->Subtotal}}</td>
-                        <?php $totalHarga = $totalHarga+$detailpejualan->Subtotal ?>
-                    </tr>
-                    @endforeach
-
-       </tbody>
-    </table>
-
-  {{-- <h3>TOTAL HARGA : {{$totalHarga}}<h3> --}}
-                <h1>Total Harga : {{ number_format($totalHarga,0,',',',') }}</h1>
-                <br>
-                <form class="d-grid gap-2 col-6 mx-auto" action='{{url("/checkout") }}' method="POST">
+        <div class="total">
+            Total Harga: {{ number_format($TotalHarga, 0, ',', ',') }}
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <form action="{{ url('/checkout') }}" method="POST">
                     @method("POST")
-                    @CSRF
-
- <input type="hidden" name="idPenjualan" value="{{ $idPenjualan }}">
- <input type="hidden" name="totalHarga" value="{{ $totalHarga }}">
-                <button class="btn btn-outline-primary" type="submit" name="submit" value="checkout">Check Out</button>
+                    @csrf
+        
+                    <input type="hidden" name="idPenjualan" value="{{ $idPenjualan }}">
+                    <input type="hidden" name="totalHarga" value="{{ $TotalHarga }}">
+                    <button class="btn btn-outline-primary btn-checkout" type="submit" name="submit" value="checkout">Check Out</button>
                 </form>
-  </div>
-</div>
-</body>
-
-@endsection
+            </div>
+            <div class="col-md-1">
+                <a type="button" class="btn btn-outline-primary btn-checkout" href="{{ url("/home") }}">Kembali home</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-@include('layouts.navbar')

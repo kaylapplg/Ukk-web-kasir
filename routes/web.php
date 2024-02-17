@@ -12,9 +12,9 @@ Route::get('/app', function () {
     return view('layouts.app');
 });
 
-Route::post('/login', [LoginController::class, 'index']);
+Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/login', [LoginController::class,   'index'])->name("login");
-Route::get('/logout', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('/registrasi', [RegistrasiController::class, 'buat_akun']);
 Route::post('/registrasi', [RegistrasiController::class, 'registrasi']);
@@ -32,7 +32,13 @@ Route::get('/tambahpelanggan', [PelangganController::class, 'pelanggan']) ;
 Route::post('/tambahpelanggan', [PelangganController::class, 'tambahpelanggan']) ;
 
 Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
-Route::post('/penjualan', [PenjualanController::class, 'penjualan']);
+Route::post('/penjualan', [PenjualanController::class, 'store']);
+Route::post('/checkout', [PenjualanController::class, 'checkout']);
+//Route::get('/detailpenjualan/{id}', [PenjualanController::class, 'prosesdetailpenjualan']);
+Route::get('/detailpenjualan/{id}', [PenjualanController::class, 'detailpenjualan']);
+Route::get('/datapenjualan', [PenjualanController::class, 'tampilpenjualan']);
+Route::get('/datapenjualan/{id}', [PenjualanController::class, 'tampilpenjualan']);
+Route::post('/datapenjualan/{id}', [PenjualanController::class, 'tampilpenjualan']);
 
 Route::get('/tampildataproduk', [ProdukController::class, 'tampilproduk']) ;
 Route::get('/dataproduk/updateproduk/{id}', [ProdukController::class, 'updateproduk']) ;

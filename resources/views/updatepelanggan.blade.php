@@ -90,21 +90,21 @@
     <form class="login-form">
         <div class="form-group">
             <label for="NamaPelanggan">Nama Pelanggan:</label>
-            <input type="text" name="NamaPelanggan" required>{{ $pelanggan->NamaPelanggan}}>
+            <input type="text" name="NamaPelanggan" required>{{ $pelanggan->NamaPelanggan}}
             @error('NamaPelanggan')
                 <div>{{$message}}</div>
                 @enderror
         </div>
         <div class="form-group">
           <label for="Alamat">Alamat:</label>
-          <input type="text" name="Alamat" required>{{ $pelanggan->Alamat}}>
+          <input type="text" name="Alamat" required>{{ $pelanggan->Alamat}}
           @error('Alamat')
           <div>{{$message}}</div>
           @enderror
       </div>
       <div class="form-group">
         <label for="NomorTelepon">NomorTelepon:</label>
-        <input type="text" name="NomorTelepon" required>{{ $pelanggan->NomorTelepon}}>
+        <input type="text" name="NomorTelepon" required>{{ $pelanggan->NomorTelepon}}
         @error('NomorTelepon')
                 <div>{{$message}}</div>
                 @enderror

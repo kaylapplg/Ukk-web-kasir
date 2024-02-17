@@ -74,28 +74,27 @@
 </head>
 <body>
 
-    <form id="registrationForm">
     <form action= "registrasi" method="post">
     @method("POST")
-        @csrf
+    @csrf
         <h2>Form Registrasi</h2>
         
         <label for="id">ID:</label>
         <input type="text" id="id" required>
         
         <label for="name">Nama:</label>
-        <input type="text" id="name" required>
+        <input type="text" name="nama" required>
 
         <label for="username">Username:</label>
-        <input type="text" id="username" required>
+        <input type="text" name="username" required>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" required>
+        <input type="email" name="email" required>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" required>
+        <input type="password" name="password" required>
 
-        <button type="button" onclick="register()">Daftar</button>
+        <button type="submit">Daftar</button>
 <button type="button" class="cancel" onclick="cancel()">Batal</button>
     </form>
 
