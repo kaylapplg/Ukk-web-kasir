@@ -82,18 +82,19 @@ class PenjualanController extends Controller
     }
     function detailpenjualan($id){
         $penjualan = DB::table('penjualan')->where('PenjualanID', $id)->get();
-        $detailPenjualan = DB::table('detailpenjualan')->where('PenjualanID', $id)
+        $detailpenjualan = DB::table('detailpenjualan')->where('PenjualanID', $id)
         ->join('produk', 'detailpenjualan.ProdukID', '=', 'produk.ProdukID')
         ->get();
 
-        return $detailPenjualan;
+        return view ("detailpenjualan" , ['penjualan' => $penjualan, 'detailpenjualan' => $detailpenjualan]);
     }
 
     function tampilpenjualan(){
         $judul = "datapenjualan";
         $penjualan = DB::table('penjualan')
-        ->join('pelanggan', 'penjualan.PenjualanID', '=', 'pelanggan.PelangganID')->get();
+        ->get();
+        
 
-        return view ('datapenjualan' , ['judul' => $judul, 'penjualan' => $penjualan]);
+        return view ('datapenjualan' , ['penjualan' => $penjualan]);
     }
 }

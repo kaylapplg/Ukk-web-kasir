@@ -1,3 +1,4 @@
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,7 +62,7 @@
             margin-top: 1rem;
         }
 
-        .delete, .update {
+        .detail {
             padding: 0.5rem 1rem;
             margin: 0.2rem;
             cursor: pointer;
@@ -105,8 +106,7 @@
             <td>{{$penjualan->TotalHarga}}</td>
             <td>{{$penjualan->PelangganID}}</td>
             <td class="actions">
-                <a type="button" class="btn btn-outline-info" href={{url("/detailpenjualan/$penjualan->PenjualanID")}}>Detail</button>
-            </td>
+                <a type="button" class="detail" href={{url("/detailpenjualan/$penjualan->PenjualanID")}}>Detail</button>
         </tr>
     </tbody>
     @endforeach

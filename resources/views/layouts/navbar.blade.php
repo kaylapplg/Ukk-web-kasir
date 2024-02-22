@@ -76,7 +76,7 @@
                 </a>
 <script>
         function confirmLogout() {
-        var confirmLogout = confirm("Anda yakin ingin logout?");
+        var confirmLogou = ("Anda yakin ingin logout?");
         if (confirmLogout) {
             window.location.href = "/logout"; 
         }

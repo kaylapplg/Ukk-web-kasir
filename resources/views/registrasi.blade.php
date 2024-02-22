@@ -63,12 +63,19 @@
             width: 100%;
         }
 
-        button.cancel {
-            background-color: #F64083;
+        button.daftar {
+            background-color: #ff5c97;
         }
 
-        button:hover {
-            background-color: #FFDEF9;
+        button.daftar:hover {
+            background-color: #ee387b;
+        }
+        button.batal {
+            background-color: #d8165d;
+        }
+
+        button.batal:hover {
+            background-color: #af0744;
         }
     </style>
 </head>
@@ -78,10 +85,6 @@
     @method("POST")
     @csrf
         <h2>Form Registrasi</h2>
-        
-        <label for="id">ID:</label>
-        <input type="text" id="id" required>
-        
         <label for="name">Nama:</label>
         <input type="text" name="nama" required>
 
@@ -94,19 +97,7 @@
         <label for="password">Password:</label>
         <input type="password" name="password" required>
 
-        <button type="submit">Daftar</button>
-<button type="button" class="cancel" onclick="cancel()">Batal</button>
+        <br><button type="submit" class="daftar">Daftar</button></br>
     </form>
-
-    <script>
-        function register() {
-            alert("Registrasi berhasil!");
-        }
-
-        function cancel() {
-            alert("Pendaftaran dibatalkan.");
-        }
-    </script>
-
 </body>
 </html>

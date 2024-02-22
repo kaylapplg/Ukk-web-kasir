@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\KasirController;
@@ -15,6 +16,11 @@ Route::get('/app', function () {
 Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/login', [LoginController::class,   'index'])->name("login");
 Route::post('/login', [LoginController::class, 'login']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', [LoginController::class, 'home']);
+    Route::get('/home/logout', [LoginController::class, 'login']);
+});
 
 Route::get('/registrasi', [RegistrasiController::class, 'buat_akun']);
 Route::post('/registrasi', [RegistrasiController::class, 'registrasi']);
@@ -37,8 +43,7 @@ Route::post('/checkout', [PenjualanController::class, 'checkout']);
 //Route::get('/detailpenjualan/{id}', [PenjualanController::class, 'prosesdetailpenjualan']);
 Route::get('/detailpenjualan/{id}', [PenjualanController::class, 'detailpenjualan']);
 Route::get('/datapenjualan', [PenjualanController::class, 'tampilpenjualan']);
-Route::get('/datapenjualan/{id}', [PenjualanController::class, 'tampilpenjualan']);
-Route::post('/datapenjualan/{id}', [PenjualanController::class, 'tampilpenjualan']);
+
 
 Route::get('/tampildataproduk', [ProdukController::class, 'tampilproduk']) ;
 Route::get('/dataproduk/updateproduk/{id}', [ProdukController::class, 'updateproduk']) ;

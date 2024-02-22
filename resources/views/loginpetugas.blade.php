@@ -104,15 +104,15 @@
             </form>
         </div>
     </form>
-    {{-- <script>
-       function redirectToLogin() {
+    <script>
+        function redirectToLogin() {
             var selectedRole = document.getElementById('roleSelect').value;
             if (selectedRole === 'admin') {
                 window.location.href = "{{ url("/login") }}";
             } else if (selectedRole === 'petugas') {
                 window.location.href = "{{ url("/loginpetugas") }}";
-            } 
-        } --}}
+            }
+        }
     </script>
 </body>
 </html>

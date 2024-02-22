@@ -16,24 +16,18 @@ class RegistrasiController extends Controller
             'table_registrasi', ['registrasi'=> $registrasi]);
     }
 
-    function registrasi (request $request){
-
-        // return 'tes';
-        $id = $request->id;
+    function registrasi(Request $request){
         $nama = $request->nama;
         $username = $request->username;
         $email = $request->email;
         $password = $request->password;
-
+    
         DB::table('registrasi')->insert([
-            'id'=> $id,
             'nama'=> $nama,
             'username'=> $username,
             'email'=> $email,
             'password'=> Hash::make($password),
         ]);
-
-        
 
         return redirect('/login');
     }
