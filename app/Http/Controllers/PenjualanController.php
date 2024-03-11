@@ -79,6 +79,8 @@ class PenjualanController extends Controller
         if($updateData){
             return redirect()->back()->with("info", "penjualan telah berhasil");
         }
+
+       
     }
     function detailpenjualan($id){
         $penjualan = DB::table('penjualan')->where('PenjualanID', $id)->get();
@@ -97,4 +99,12 @@ class PenjualanController extends Controller
 
         return view ('datapenjualan' , ['penjualan' => $penjualan]);
     }
+
+    function deletepenjualan($id){
+        $delete = DB::table('penjualan')->where('PenjualanID', $id)->delete();
+        //if ($deleted){
+            return redirect()->back();
+        
+    }
+
 }

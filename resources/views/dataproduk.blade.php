@@ -110,7 +110,7 @@
             <td>{{$produk->Harga}}</td>
             <td>{{$produk->Stok}}</td>
             <td class="actions">
-                <a type="button" class="delete" href={{url("/dataproduk/deleteproduk/$produk->ProdukID")}}>Hapus</button>
+                <a type="button" class="delete" href={{url("/dataproduk/deleteproduk/$produk->ProdukID")}}  onclick = "return confirm('Anda Yakin Ingin Menghapusnya?');">Hapus</button>
                 <a type="button" class="update" href={{url("/dataproduk/updateproduk/$produk->ProdukID")}}>Update</button>
             </td>
         </tr>

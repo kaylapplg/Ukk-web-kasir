@@ -76,7 +76,7 @@
     </style>
 </head>
 <body>
-    <form action="{{ url("/home") }}" method="post">
+    <form action="{{ url("/login") }}" method="post">
         @method("POST")
         @CSRF
         <div class="login-container">

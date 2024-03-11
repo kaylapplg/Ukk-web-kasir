@@ -10,6 +10,8 @@
     <!-- Boxicons CSS -->
     <link flex href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <script src={{url("/css/script.js")}} defer></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
   <body>
     <nav class="sidebar locked">
@@ -74,16 +76,16 @@
                   <i><img src="{{url('foto/images/tambah.png')}}" alt="Image" height="30" width="30"></i>
                   <span>Tambah Pelanggan</span>
                 </a>
-<script>
+{{-- <script>
         function confirmLogout() {
         var confirmLogou = ("Anda yakin ingin logout?");
         if (confirmLogout) {
             window.location.href = "/logout"; 
         }
     }
-</script>
+</script> --}}
 <right>
-<a class="nav-link" href={{url("/logout")}}><button class="btn btn-outline-success" onclick="confirmLogout()"><font face="comic sans ms" color="white"><img src="{{ asset('/foto/images/logout.png')}}"  alt="Image" height="20" width="20">Logout</font></button></a>
+<a class="nav-link" href={{url("/logout")}}><button class="btn btn-outline-success"  onclick = "return confirm('Anda Yakin Ingin Logout?');" type="submit" ><font face="comic sans ms" color="white"><img src="{{ asset('/foto/images/logout.png')}}"  alt="Image" height="20" width="20">Logout</font></button></a>
 </right>  
 </body>
 </html>

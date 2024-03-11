@@ -62,7 +62,7 @@
             margin-top: 1rem;
         }
 
-        .detail {
+        .delete, .detail {
             padding: 0.5rem 1rem;
             margin: 0.2rem;
             cursor: pointer;
@@ -72,14 +72,21 @@
             transition: background-color 0.3s;
         }
 
-        .detail {
+        .delete {
             background-color: #FF8BBE; 
         }
 
-        .detail:hover {
+        .delete:hover {
             background-color: #CB2E72; 
         }
 
+        .detail {
+            background-color: #FFE899; 
+        }
+
+        .detail:hover {
+            background-color: #D7B53C; 
+        }
     </style>
 </head>
 <body>
@@ -106,6 +113,7 @@
             <td>{{$penjualan->TotalHarga}}</td>
             <td>{{$penjualan->PelangganID}}</td>
             <td class="actions">
+                <a type="button" class="delete" href={{url("/detailpenjualan/deletepenjualan/$penjualan->PenjualanID")}}  onclick = "return confirm('Anda Yakin Ingin Menghapusnya?');">Hapus</button>
                 <a type="button" class="detail" href={{url("/detailpenjualan/$penjualan->PenjualanID")}}>Detail</button>
         </tr>
     </tbody>

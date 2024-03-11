@@ -41,6 +41,7 @@ Route::get('/penjualan', [PenjualanController::class, 'penjualan']);
 Route::post('/penjualan', [PenjualanController::class, 'store']);
 Route::post('/checkout', [PenjualanController::class, 'checkout']);
 //Route::get('/detailpenjualan/{id}', [PenjualanController::class, 'prosesdetailpenjualan']);
+Route::get('/detailpenjualan/deletepenjualan/{id}', [PenjualanController::class, 'deletepenjualan']) ;
 Route::get('/detailpenjualan/{id}', [PenjualanController::class, 'detailpenjualan']);
 Route::get('/datapenjualan', [PenjualanController::class, 'tampilpenjualan']);
 

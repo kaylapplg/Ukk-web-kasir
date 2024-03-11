@@ -110,7 +110,7 @@
             <td>{{$pelanggan->Alamat}}</td>
             <td>{{$pelanggan->NomorTelepon}}</td>
             <td class="actions">
-                <a type="button" class="delete" href={{url("/datapelanggan/deletepelanggan/$pelanggan->PelangganID")}}>Hapus</button>
+                <a type="button" class="delete" href={{url("/datapelanggan/deletepelanggan/$pelanggan->PelangganID")}} onclick = "return confirm('Anda Yakin Ingin Menghapusnya?');">Hapus</button>
                 <a type="button" class="update" href={{url("/datapelanggan/updatepelanggan/$pelanggan->PelangganID")}}>Update</button>
             </td>
         </tr></center>
